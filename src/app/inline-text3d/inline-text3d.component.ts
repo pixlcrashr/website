@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
-import Image from 'image-js';
 import { FormsModule } from '@angular/forms';
-import { combineLatest, interval, map, Observable } from 'rxjs';
-import { fromPromise } from 'rxjs/internal/observable/innerFrom';
+import { interval } from 'rxjs';
+import { base64ToContentMatrix, contentMatrixToContentHtml } from '../../lib/char-animations';
+import { ANIMATION } from '../../lib/char-animations/apple';
+import { Animation } from '../../lib/char-animations';
 
 
 
@@ -29,59 +30,27 @@ export class InlineText3dComponent implements AfterViewInit {
   public content = '';
 
   public ngAfterViewInit(): void {
-    this.content$().subscribe({
-      next: content => {
-        this.content = content;
+    const anim = ANIMATION;
+
+    this.setContent(anim, 0);
+
+    interval(300).subscribe({
+      next: x => {
+        const i = x % anim.frames.length;
+        this.setContent(
+          anim,
+          i
+        );
       }
-    });
+    })
   }
 
-  private content$(): Observable<string> {
-    return combineLatest([
-      fromPromise(Image.load('test.png')).pipe(
-        map(img => img
-          .rgba8()
-        )
-      ),
-      interval(500)
-    ]).pipe(
-      map(([img, i]) => {
-        const points = [
-          [0, 0],
-          [img.width, 0],
-          [img.width, img.height],
-          [0, img.height]
-        ];
-        console.log(points);
-
-        const pixels = img
-          .warpingFourPoints(points)
-          .grey({
-            keepAlpha: true
-          })
-          .resize({
-            width: this.charWidth,
-            height: this.charHeight
-          })
-          .getPixelsArray();
-
-        let contentHtml = '';
-        pixels.forEach((
-          p,
-          i
-        ) => {
-          const randChar = this.chars.charAt(Math.floor(Math.random() * this.chars.length));
-          const percentage = p[0] / 255;
-          contentHtml += percentage === 0 ?
-            ' ' :
-            randChar;
-
-          if (((i + 1) % this.charWidth) === 0) {
-            contentHtml += '<br />';
-          }
-        });
-        return contentHtml;
-      })
+  public setContent(anim: Animation, i: number): void {
+    const frame = anim.frames[i];
+    const matrix = base64ToContentMatrix(frame);
+    this.content = contentMatrixToContentHtml(
+      anim.width,
+      matrix
     );
   }
 }

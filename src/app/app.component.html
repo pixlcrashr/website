@@ -1,3 +1,35 @@
+<div class="content">
+  <div class="menu">
+    <div class="title-container">
+      <h1 class="title">pixlcrashr</h1>
+    </div>
+    <p class="subtitle">
+      [ˈpɪksəlˈkræʃər], he / him<br />
+      Fullstack developer</p>
 
-<app-inline-text3d></app-inline-text3d>
-<p>Test</p>
+      @for (section of menu; track section.title) {
+        <section>
+          <h2 class="section-title">{{ section.title }}</h2>
+          <ul class="menu-list">
+              @for (item of section.items; track item.title) {
+                <li class="menu-list-item">
+                  @if (item.prefix !== '') {
+                    {{item.prefix}}:
+                  }
+
+                  @if (item.href === '') {
+                    <a>{{ item.title }}</a>
+                  } @else {
+                    <a [href]="item.href" target="_blank">{{ item.title }}</a>
+                  }
+
+                  @if (item?.suffix !== undefined) {
+                    {{ item.suffix }}
+                  }
+                </li>
+              }
+          </ul>
+        </section>
+      }
+  </div>
+</div>

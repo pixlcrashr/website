@@ -1,0 +1,37 @@
+<app-layout-content>
+  <app-layout-menu>
+    <app-layout-title-container>
+      <app-layout-title>pixlcrashr</app-layout-title>
+    </app-layout-title-container>
+    <p class="subtitle">
+      [ˈpɪksəlˈkræʃər], he / him<br />
+      ~vincent <br />
+      fullstack developer</p>
+
+    @for (section of menu; track section.title) {
+      <section>
+        <h2 class="section-title">{{ section.title }}</h2>
+        <app-layout-menu-list>
+          @for (item of section.items; track item.title) {
+            <app-layout-menu-list-item>
+              @if (item.prefix !== '') {
+                {{item.prefix}}:
+              }
+
+              @if (item.href === '') {
+                <a>{{ item.title }}</a>
+              } @else {
+                <a [href]="item.href" target="_blank">{{ item.title }} ↗</a>
+              }
+
+              @if (item?.suffix !== undefined) {
+                {{ item.suffix }}
+              }
+            </app-layout-menu-list-item>
+          }
+        </app-layout-menu-list>
+      </section>
+    }
+  </app-layout-menu>
+  <p><a routerLink="/imprint" class="imprint-anchor">impressum ↗</a></p>
+</app-layout-content>

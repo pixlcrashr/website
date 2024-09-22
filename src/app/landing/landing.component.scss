@@ -1,31 +1,6 @@
-.content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.menu {
-  max-width: 40%;
-}
-
-.title-container {
-  width: fit-content;
-}
-
-.title {
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  letter-spacing: 0.25em;
-  border-right: .1em solid #0dff7a;
-  box-sizing: border-box;
-  animation:
-    typing 0.8s steps(10, end),
-    blink-caret 0.9s step-end infinite;
+:host {
+  position: relative;
+  display: block;
 }
 
 .subtitle {
@@ -37,16 +12,6 @@
 .section-title {
   margin-top: 30px;
   margin-bottom: 5px;
-}
-
-.menu-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-
-  .menu-list-item:not(:last-child) {
-    margin-bottom: 3px;
-  }
 }
 
 .link-icon {

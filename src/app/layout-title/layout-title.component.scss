@@ -1,3 +1,8 @@
+.container {
+  width: fit-content;
+  display: flex;
+}
+
 .title {
   white-space: nowrap;
   overflow: hidden;
@@ -6,25 +11,21 @@
   letter-spacing: 0.25em;
   border-right: .1em solid #0dff7a;
   box-sizing: border-box;
-  animation:
-    typing 0.8s steps(10, end),
-    blink-caret 0.9s step-end infinite;
+  animation: typing 0.8s steps(10, end), blinkCaret 0.9s step-end infinite;
 }
 
 @keyframes typing {
-  from
-  {
-    width: 0
+  from {
+    width: 0;
   }
   to {
     width: 100%;
   }
 }
 
-@keyframes blink-caret {
-  from, to
-  {
-    border-color: transparent
+@keyframes blinkCaret {
+  from, to {
+    border-color: transparent;
   }
   50% {
     border-color: #0dff7a;

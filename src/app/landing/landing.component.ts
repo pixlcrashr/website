@@ -4,8 +4,12 @@ import { LayoutContentComponent } from '../layout-content/layout-content.compone
 import { LayoutMenuListItemComponent } from '../layout-menu-list-item/layout-menu-list-item.component';
 import { LayoutMenuListComponent } from '../layout-menu-list/layout-menu-list.component';
 import { LayoutMenuComponent } from '../layout-menu/layout-menu.component';
-import { LayoutTitleContainerComponent } from '../layout-title-container/layout-title-container.component';
 import { LayoutTitleComponent } from '../layout-title/layout-title.component';
+import { LayoutSubtitleComponent } from '../layout-subtitle/layout-subtitle.component';
+import { LayoutSectionComponent } from '../layout-section/layout-section.component';
+import { LayoutSectionTitleComponent } from '../layout-section-title/layout-section-title.component';
+
+
 
 @Component({
   selector: 'app-landing',
@@ -16,8 +20,10 @@ import { LayoutTitleComponent } from '../layout-title/layout-title.component';
     LayoutMenuListComponent,
     LayoutMenuListItemComponent,
     LayoutTitleComponent,
-    LayoutTitleContainerComponent,
-    RouterLink
+    RouterLink,
+    LayoutSubtitleComponent,
+    LayoutSectionComponent,
+    LayoutSectionTitleComponent
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss'

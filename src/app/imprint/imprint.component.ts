@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LayoutContentComponent } from '../layout-content/layout-content.component';
 import { LayoutMenuComponent } from '../layout-menu/layout-menu.component';
-import { LayoutTitleContainerComponent } from '../layout-title-container/layout-title-container.component';
 import { LayoutTitleComponent } from '../layout-title/layout-title.component';
+
+
 
 @Component({
   selector: 'app-imprint',
@@ -11,7 +12,6 @@ import { LayoutTitleComponent } from '../layout-title/layout-title.component';
   imports: [
     LayoutContentComponent,
     LayoutMenuComponent,
-    LayoutTitleContainerComponent,
     LayoutTitleComponent,
     RouterLink
   ],

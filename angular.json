@@ -27,7 +27,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/site.webmanifest",
-              "src/assets"
+              "src/assets",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss",
@@ -88,7 +89,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/site.webmanifest",
-              "src/assets"
+              "src/assets",
+              "src/robots.txt"
             ],
             "styles": [
               "src/styles.scss",
